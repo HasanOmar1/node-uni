@@ -1,5 +1,5 @@
 //greet.js
-const greet = function () {
+const greet = () => {
   console.log("Hello!");
 };
 
