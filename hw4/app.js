@@ -12,7 +12,7 @@ const files = [
   "9.txt",
 ];
 const words = [];
-const nums = [];
+let nums = [];
 
 for (let i = 0; i < files.length; i++) {
   let randomLines = Math.ceil(Math.random() * 10);
@@ -24,6 +24,8 @@ for (let i = 0; i < files.length; i++) {
   for (let c = 0; c < nums.length; c++) {
     fs.appendFileSync(`${__dirname}/${files[i]}`, c + "\n");
   }
+
+  nums = [];
 }
 
 files.map((f) => {
