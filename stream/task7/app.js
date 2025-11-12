@@ -19,20 +19,25 @@ const fn = () => {
     arrOfRandomNums = [];
   }
 
-  let counter = 0;
+  let max = 0;
+
   for (let i = 1; i < arrOfFiles.length; i++) {
     let arrOfLines = [];
     let dataByPerLine = fs.readFileSync(`${dirPath}/${i}.txt`, "utf-8");
-    arrOfLines.push(dataByPerLine);
-    for (let j = 0; j < arrOfLines.length; j++) {}
-    console.table(arrOfLines);
-    //   let data = arrOfLines.join("\n");
-    //   console.log(data);
-    //   let split = data.split("\n");
+    console.log(dataByPerLine);
+    console.log("****************");
+
+    // arrOfLines.push(dataByPerLine);
+    // console.table(arrOfLines);
+    // console.log(dataByPerLine.length);
+    // if (arrOfLines.length > max) {
+    //   max = arrOfLines.length;
+    // }
 
     // fs.appendFileSync(`${dirPath}/output.txt`, split[c] + "\n");
-    // }
   }
+
+  // console.log(max);
 };
 
 fn();
