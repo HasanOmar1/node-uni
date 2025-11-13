@@ -3,17 +3,177 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
     <title>Hasan</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        background-color: rgb(188, 204, 221);
+        min-height: 90vh;
+        width: 50vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 30px auto;
+      }
+
+      h1 {
+        font-weight: 900;
+      }
+
+      .imp {
+        color: #204a6a;
+      }
+
+      main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .book {
+        height: 60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        border: 2px solid black;
+        width: 500px;
+        margin: 20px;
+      }
+
+      .book .top,
+      .book .mid,
+      .book .bottom {
+        width: 100%;
+      }
+
+      .book .top {
+        height: 24%;
+        background-color: rgb(203, 197, 197);
+      }
+
+      .book .top #tag {
+        margin-left: 30px;
+        padding: 5px;
+        background-color: #333;
+        color: white;
+        width: fit-content;
+        letter-spacing: 1.4px;
+      }
+
+      .book .top .para {
+        font-size: 10px;
+        width: 45ch;
+        margin-left: 40%;
+      }
+
+      .book .top .author {
+        margin-left: 50%;
+        width: fit-content;
+        margin-top: 25px;
+        font-size: 1.3rem;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+      }
+      .book .mid {
+        height: 26%;
+        background-color: white;
+      }
+
+      .book .mid #title {
+        margin-left: 160px;
+        margin-top: 5px;
+      }
+      .book .mid h2 {
+        font-size: 2.8rem;
+      }
+      .book .mid #top {
+        margin-left: 60px;
+      }
+
+      .book .bottom {
+        height: 50%;
+        background-color: #f7e032;
+        position: relative;
+      }
+
+      .book .bottom #big {
+        font-size: 13rem;
+        margin-left: 140px;
+        color: #333;
+      }
+
+      .book .bottom #dont-know {
+        position: absolute;
+        font-weight: bold;
+        left: 33%;
+        rotate: -90deg;
+        color: #f7e032;
+        top: 48%;
+        font-size: 0.9rem;
+      }
+
+      main #small-para {
+        width: 40ch;
+        margin-top: 30px;
+        font-size: 0.9rem;
+      }
+
+      footer {
+        margin-top: 50px;
+        font-weight: bold;
+      }
+    </style>
   </head>
+
   <body>
-    <main>
-      <h1>Book Component by function</h1>
-      <h3>By Kyle Simpson</h3>
+    <div class="container">
+      <main>
+        <h1 class="imp">Book Component by function</h1>
 
-      <p>parts of the language that many javascript programmers simply avoid</p>
-    </main>
+        <div class="book">
+          <div class="top">
+            <p id="tag">O'REILLY</p>
+            <p class="para">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae
+              veritatis accusantium aut ea sapiente
+            </p>
+            <p class="para">
+              eaque aspernatur, itaque magnam eveniet cupiditate.
+            </p>
+            <h4 class="author">KYLE SIMPSON</h4>
+          </div>
 
-    <footer>&copy; 2025 Hasan</footer>
+          <div class="mid">
+            <div id="title">
+              <h2 id="top">SCOPE &</h2>
+              <h2>CLOSURES</h2>
+            </div>
+          </div>
+          <div class="bottom">
+            <p id="dont-know">YOU DON'T KNOW</p>
+            <h3 id="big">JS</h3>
+          </div>
+        </div>
+
+        <h3 class="imp">By Kyle Simpson</h3>
+
+        <p id="small-para">
+          parts of the language that many javascript programmers simply avoid
+        </p>
+      </main>
+
+      <footer>
+        <p class="imp">&copy; 2025 Hasan</p>
+      </footer>
+    </div>
   </body>
 </html>
