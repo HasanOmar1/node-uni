@@ -6,14 +6,10 @@ const dirPath = path.join(__dirname, "text");
 const arrOfFiles = ["1.txt", "2.txt", "3.txt"];
 
 const fn = () => {
-  let maxLines = 0;
-
   // --- CREATE INPUT FILES (random content) ---
   for (let i = 0; i < arrOfFiles.length; i++) {
-    let randomLines = Math.ceil(Math.random() * 20);
+    let randomLines = Math.ceil(Math.random() * 10);
     let arrOfRandomNums = [];
-
-    maxLines = Math.max(maxLines, randomLines);
 
     for (let j = 0; j < randomLines; j++) {
       let randomNumsInFile = Math.ceil(Math.random() * 100);
@@ -21,17 +17,16 @@ const fn = () => {
     }
 
     let data = arrOfRandomNums.join("\n");
-    fs.writeFileSync(`${dirPath}/${i + 1}.txt`, data, "utf8");
+    fs.writeFileSync(`${dirPath}/${i + 1}.txt`, data);
   }
 
   // --- READ ALL FILES INTO ARRAYS OF LINES ---
   let fileLines = arrOfFiles.map((file, idx) => {
     let data = fs.readFileSync(`${dirPath}/${idx + 1}.txt`, "utf-8");
-    return data.length === 0 ? [] : data.split("\n");
+    return data.split("\n");
   });
 
   let result = [];
-
   let takeCount = 1; // how many lines to take this round
 
   while (true) {
