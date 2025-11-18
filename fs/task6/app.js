@@ -31,7 +31,6 @@ const fn = () => {
 
   // -------------------------------
   // READ ALL FILES INTO ARRAYS OF LINES
-  // fileLines = [ [lines from file1], [file2], [file3] ]
   // -------------------------------
   let fileLines = arrOfFiles.map((file, idx) => {
     let data = fs.readFileSync(`${dirPath}/${idx + 1}.txt`, "utf-8");
