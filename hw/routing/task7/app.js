@@ -38,8 +38,7 @@ const server = http.createServer(function (req, res) {
     // CASE 2: CSS Files
     // Uses Regex to check if the URL ends with ".css"
   } else if (req.url.match("[.]css$")) {
-    const cssPath = path.join(__dirname, "templates", req.url);
-
+    const cssPath = path.join(__dirname, req.url);
     const fileStream = fs.createReadStream(cssPath, "UTF-8");
 
     // Note the Content-Type is text/css
@@ -50,8 +49,7 @@ const server = http.createServer(function (req, res) {
     // CASE 3: JPG Images
     // Uses Regex to check if the URL ends with ".jpg"
   } else if (req.url.match("[.]jpg$")) {
-    const imgPath = path.join(__dirname, "templates", req.url);
-
+    const imgPath = path.join(__dirname, req.url);
     // IMPORTANT: No "UTF-8" encoding here because images are binary data
     const fileStream = fs.createReadStream(imgPath);
 
