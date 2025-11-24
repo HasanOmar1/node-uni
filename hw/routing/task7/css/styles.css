@@ -61,3 +61,30 @@ footer {
   padding: 20px;
   text-align: center;
 }
+.navBar {
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+}
+.navBar li a {
+  color: black;
+  text-decoration: none;
+}
+
+.aboutMain {
+  margin: 0 auto;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.contantMain {
+  margin: 0 auto;
+  flex-direction: column;
+  height: 80vh;
+}
