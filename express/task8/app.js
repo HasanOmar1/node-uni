@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 app.get("/products/:productPrice", (req, res) => {
   const { productPrice } = req.params;
   const products = data.products.filter((d) => d.price > productPrice);
-  res.send(products);
+  res.json(products);
 });
 
 app.listen(port, () => {
