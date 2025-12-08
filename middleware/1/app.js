@@ -17,30 +17,36 @@ app.get("/products/:id", (req, res) => {
     res.status(404);
     res.send("Product not found");
   }
-  console.log(item);
   res.send(item);
 });
 
 app.delete("/products/:id", (req, res) => {
   const { id } = req.params;
-  const item = products.find((e) => e.id === +id);
-  let index = products.indexOf(item);
+  const productIndex = products.findIndex((e) => e.id === +id);
 
-  if (!item) {
-    res.status(404);
-    res.send("Product not found");
+  if (productIndex === -1) {
+    return res
+      .status(404)
+      .json({ error: `product with id: ${req.params.id} is not found` });
   }
-  products.splice(index, 1);
+  products.splice(productIndex, 1);
 
-  res.send("Item removed");
+  res.json({ message: `Product with id: ${req.params.id} was deleted` });
 });
 
 app.post("/products", (req, res) => {
   const { name, price } = req.body;
 
-  const obj = { id: ++idCounter, name, price };
-  products.push(obj);
-  res.send(products);
+  if (!name || typeof price !== "number") {
+    return res.status(400).json({ error: "Incorrect type of data" });
+  }
+
+  const product = { id: ++idCounter, name, price };
+  products.push(product);
+  res.status(201).json({
+    message: "Product was added",
+    product: { id: product.id, name, price },
+  });
 });
 
-app.listen(3000, () => console.log("Listening to 3000"));
+app.listen(3000, () => console.log("Listening to PORT 3000"));
