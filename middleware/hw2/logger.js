@@ -1,4 +1,6 @@
 //  חסן עומר + עיסא לואבנה
+
+// logger middleware to log HTTP method, URL, date, and time
 const logger = (req, res, next) => {
   const method = req.method;
   const url = req.url;
