@@ -1,3 +1,5 @@
+//  חסן עומר + עיסא לואבנה
+
 const data = {
   products: [
     { id: 1, name: "Laptop", price: 1000, stock: 50 },
