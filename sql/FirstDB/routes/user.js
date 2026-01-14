@@ -7,6 +7,8 @@ const bcrypt = require("bcrypt");
 // Execute a query to the database
 const db = dbSingleton.getConnection();
 
+let user = null;
+
 router.get("/", (req, res) => {
   const query = " SELECT * FROM users";
 
@@ -61,7 +63,7 @@ router.post("/login", (req, res) => {
     if (result.length === 0) {
       return res.status(404).json({ message: "User not found" });
     }
-    const user = result[0];
+    user = result[0];
 
     bcrypt.compare(password, user.password, (err, isMatch) => {
       if (err) return res.status(500).send(err);
@@ -81,22 +83,45 @@ router.post("/login", (req, res) => {
 
 router.put("/:id", (req, res) => {
   const { id } = req.params;
-  let { username, email, password } = req.body;
+  let { username, email, currentPassword, newPassword } = req.body;
 
-  bcrypt.genSalt(10, (err, salt) => {
-    if (err) throw err;
-    bcrypt.hash(password, salt, (err, hashedPassword) => {
-      if (err) throw err;
+  const userQuery = "select * from users where id = ?";
+  db.query(userQuery, [id], (err, results) => {
+    if (err)
+      return res
+        .status(404)
+        .send({ message: `User with the id of ${id} not found` });
 
-      password = hashedPassword;
-      const query =
-        "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
-      db.query(query, [username, email, password, id], (err, results) => {
-        if (err) {
-          res.status(500).send(err);
-          return;
-        }
-        res.json({ message: "User updated!" });
+    const foundUser = results[0];
+
+    bcrypt.compare(currentPassword, foundUser.password, (err, isMatch) => {
+      if (err) return res.status(500).send(err);
+
+      if (!isMatch) {
+        return res.status(401).json({ message: "Password is incorrect" });
+      }
+
+      bcrypt.genSalt(10, (err, salt) => {
+        if (err) throw err;
+
+        bcrypt.hash(newPassword, salt, (err, hashedPassword) => {
+          if (err) throw err;
+
+          newPassword = hashedPassword;
+          const query =
+            "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
+          db.query(
+            query,
+            [username, email, newPassword, id],
+            (err, results) => {
+              if (err) {
+                res.status(500).send(err);
+                return;
+              }
+              return res.json({ message: "User updated!" });
+            }
+          );
+        });
       });
     });
   });
