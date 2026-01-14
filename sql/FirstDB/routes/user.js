@@ -87,7 +87,7 @@ router.put("/:id", (req, res) => {
     if (err) throw err;
     bcrypt.hash(password, salt, (err, hashedPassword) => {
       if (err) throw err;
-      // Save hashedPassword to database
+
       password = hashedPassword;
       const query =
         "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
