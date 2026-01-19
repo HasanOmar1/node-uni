@@ -15,7 +15,7 @@ app.use(
   }),
 );
 
-app.use("/user", registerRouter);
+app.use("/users", registerRouter);
 app.use("/articles", articlesRouter);
 
 // app.get("/", (req, res) => {
