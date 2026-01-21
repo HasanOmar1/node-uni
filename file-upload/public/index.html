@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Upload</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <script defer src="./js/file-upload.js"></script>
+</head>
+
+<body>
+  <h1>File Upload</h1>
+  <div class="container">
+    <h2>Single File Upload</h2>
+
+    <!-- <form action='/upload_file' enctype='multipart/form-data'>
+      ...
+    </form> -->
+
+    <form id="form1" onsubmit="uploadFile(event)" enctype="multipart/form-data">
+      <div class="input-group">
+        <label for='file'>Select file</label>
+        <input id='file' type="file" name="uploaded-file">
+      </div>
+      <button class="submit-btn" type='submit'>Upload</button>
+    </form>
+
+
+    <h2>Multiple Files Upload</h2>
+
+    <form id="form2" onsubmit="uploadFiles(event)" enctype="multipart/form-data">
+      <div class="input-group">
+        <label for='file'>Select files</label>
+        <input id='file' type="file" name="uploaded-file" multiple>
+      </div>
+      <button class="submit-btn" type='submit'>Upload</button>
+    </form>
+  </div>
+  <p class="message"></p>
+
+
+</body>
+
+</html>

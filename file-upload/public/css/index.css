@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  background-color: rgb(6, 26, 27, 0.8);
+  font-size: 1.6rem;
+}
+h1 {
+  color: white;
+  text-align: center;
+}
+h2 {
+  margin-top: 4rem;
+}
+.container {
+  max-width: 500px;
+  margin: 3rem auto;
+}
+.container h2,  .message{
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+}
+form {
+  background-color: white;
+  padding: 30px;
+}
+form .input-group {
+  margin-bottom: 1.5rem;
+}
+form label {
+  display: block;
+  margin-bottom: 1rem;
+}
+form input {
+  padding: 1.2rem 2rem;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+.submit-btn {
+  width: 100%;
+  border: none;
+  background: rgb(37, 83, 3);
+  font-size: 1.8rem;
+  color: white;
+  border-radius: 3px;
+  padding: 2rem;
+  text-align: center;
+}
